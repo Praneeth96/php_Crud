@@ -1,22 +1,7 @@
 <?php
 	include 'dbConnection.php';
-		
-    $sql1 = "SELECT id, firstname, lastname FROM MyGuests";
-	$result = $conn->query($sql1);
 
-	if ($result->num_rows > 0) {
-	  // output data of each row
-	  while($row = $result->fetch_assoc()) {
-	    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-	    $_POST['name']
-	  }
-	} else {
-	  echo "0 results";
-	}
-	
-	
-
-	$id = $_POST['Id'];
+	$id = $_POST['id'];
 	$name = $_POST['name'];
 	$pnum = $_POST['Phone_num'];
 	$address = $_POST['address'];
@@ -31,5 +16,5 @@
 	}
 
 	$conn->close();
-	header("refresh:2; url = PatientAdd.php");
+	header("refresh:1; url = PatientAdd.php");
 ?>

@@ -32,21 +32,46 @@
 	<br><br>
 
 	<H2>Patient Data update</H2>
-	<form action = "PatientUpdate.php" method="POST">
+	<br>
+	<form action = "" method="POST">
+		Search value by ID: <input type="text" name="Id">
 		<br>
-		ID for update data: <input type="text" name="Id">
-		<br><br><br>
-		Name: <input type="text" name="name">
-		<br>
-		Phone number: <input type="text" name="Phone_num">
-		<br>
-		Address: <input type="text" name="address">
-		<br>
-		Description: <input type="text" name="description">
-		<br>
-		
-		<input type="submit" value  = "Update" name = "btnUpdate">
+		<input type="submit" value  = "Serach" name="btnSearch">
 	</form>
+		
+	<?php
+		include 'dbConnection.php';
+
+		if(isset($_POST['btnSearch']))
+		{
+			$id = $_POST['Id'];
+
+			$search_query = "SELECT * FROM patient_details WHERE ID = '$id'";
+			$query_run = mysqli_query($conn, $search_query);
+
+			while ($row = mysqli_fetch_array($query_run)) {
+				# code...
+				?>
+					<form action = "PatientUpdate.php" method="POST">
+						<br>
+						Id: <input type="text" name="id" value="<?php echo $row['ID']?>">
+						<br>
+						Name: <input type="text" name="name" value="<?php echo $row['Name']?>">
+						<br>
+						Phone number: <input type="text" name="Phone_num" value="<?php echo $row['PhoneNum']?>">
+						<br>
+						Address: <input type="text" name="address" value="<?php echo $row['Address']?>">
+						<br>
+						Description: <input type="text" name="description" value="<?php echo $row['Description']?>">
+						<br>
+						<input type="submit" value  = "Update" name="btnUpdate">
+		
+					</form>
+				<?php
+			}
+		}
+
+	?>
 	<br><br>
 
 	<H2>Patient Data Delete</H2>
@@ -60,19 +85,7 @@
 	<br><br>
 
 	<?php
-	    //$servername = "localhost";
-		//$username = "root";
-		//$password = "";
-		//$dbname = "vihdb";
-
-		// Create connection
-		//$con=mysqli_connect($servername, $username, $password, $dbname);
 	    
-// Check connection
-		//if (mysqli_connect_errno())
-		//{
-		//echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		//}
 		include 'dbConnection.php';
 		$result = mysqli_query($conn,"SELECT * FROM patient_details");
 
