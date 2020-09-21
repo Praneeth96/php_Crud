@@ -14,8 +14,8 @@
     </style>
 </head>
 <body>
-	<H2>Patient Data Insert</H2>
-	<form action = "PatientInsert.php" method="POST">
+	<H2 style = "background-color: lightblue">Patient Data Insert</H2>
+	<form action = "PatientInsert.php" method="POST" style = "background-color: #DFF9E9">
 		<br>
 		
 		Name: <input type="text" name="name">
@@ -31,9 +31,9 @@
 	</form>
 	<br><br>
 
-	<H2>Patient Data update</H2>
+	<H2 style = "background-color: lightblue">Patient Data update</H2>
 	<br>
-	<form action = "" method="POST">
+	<form action = "" method="POST" style = "background-color: #DFF9E9">
 		Search value by ID: <input type="text" name="Id">
 		<br>
 		<input type="submit" value  = "Serach" name="btnSearch">
@@ -52,7 +52,7 @@
 			while ($row = mysqli_fetch_array($query_run)) {
 				# code...
 				?>
-					<form action = "PatientUpdate.php" method="POST">
+					<form action = "PatientUpdate.php" method="POST" style = "background-color: #DFF9E9">
 						<br>
 						Id: <input type="text" name="id" value="<?php echo $row['ID']?>">
 						<br>
@@ -74,8 +74,8 @@
 	?>
 	<br><br>
 
-	<H2>Patient Data Delete</H2>
-	<form action = "PatientDelete.php" method="POST">
+	<H2 style = "background-color: lightblue">Patient Data Delete</H2>
+	<form action = "PatientDelete.php" method="POST" style = "background-color: #DFF9E9">
 		<br>
 		Delete By Id: <input type="text" name="Id">
 		
